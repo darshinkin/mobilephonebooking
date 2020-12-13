@@ -24,6 +24,7 @@ public class Phone {
     private String brand;
     private boolean availability;
     private Date bookedOut;
+    private String person;
 
     private String technology;
     private String twoGBang;

@@ -5,5 +5,5 @@ import com.example.mobilephonebooking.model.Phone;
 import java.util.Optional;
 
 public interface BookingPhone {
-    Optional<Phone> book(long id);
+    Optional<Phone> book(long id, String person);
 }

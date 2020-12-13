@@ -21,8 +21,8 @@ public class BookService implements BookingPhone, ReturnPhone {
     private Map<Integer, Phone> phones = new ConcurrentHashMap<>();
 
     @Override
-    public Optional<Phone> book(long id) {
-        Optional<Phone> maybePhone = phoneDao.retreivePhoneById(id);
+    public Optional<Phone> book(long id, String person) {
+        Optional<Phone> maybePhone = phoneDao.retreivePhoneById(id, person);
         if (maybePhone.isEmpty() || !maybePhone.get().getExist()) {
             return Optional.empty();
         }

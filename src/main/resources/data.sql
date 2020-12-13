@@ -3,6 +3,7 @@ CREATE TABLE phone (
    exist BOOLEAN,
    model VARCHAR(50),
    brand VARCHAR(50),
+   person VARCHAR(50),
    exist availability,
    bookedOut DATE,
    technology VARCHAR(50),
