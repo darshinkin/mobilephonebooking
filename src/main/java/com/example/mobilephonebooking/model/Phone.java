@@ -1,8 +1,6 @@
 package com.example.mobilephonebooking.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -12,17 +10,20 @@ import java.sql.Date;
 @ToString
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Phone {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private Boolean exist;
 
     private String model;
     private String brand;
     private boolean availability;
+    @Column(name = "booked_out")
     private Date bookedOut;
     private String person;
 

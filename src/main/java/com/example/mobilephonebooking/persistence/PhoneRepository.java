@@ -11,11 +11,11 @@ import java.util.Date;
 public interface PhoneRepository extends CrudRepository<Phone, Long> {
 
     @Modifying
-    @Query("update PHONE ph set ph.exist = :exist, ph.person = :person, ph.booked_out = :date where ph.id = :id")
+    @Query("update Phone ph set ph.exist = :exist, ph.person = :person, ph.bookedOut = :date where ph.id = :id")
     void updateExitstsAndPersonAndDateForPhone(@Param(value = "id") long id, @Param(value = "exist") Boolean exist,
                                                @Param(value = "person") String person, @Param(value = "date") Date date);
 
     @Modifying
-    @Query("update PHONE ph set ph.exist = :exist where ph.id = :id")
+    @Query("update Phone ph set ph.exist = :exist where ph.id = :id")
     void updateExistsPhone(@Param(value = "id") long id, @Param(value = "exist") Boolean exist);
 }

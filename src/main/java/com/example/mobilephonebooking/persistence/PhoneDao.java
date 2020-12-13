@@ -16,11 +16,12 @@ public class PhoneDao {
     public Optional<Phone> retreivePhoneById(long id, String person) {
         Optional<Phone> phone = phoneRepository.findById(id);
         phoneRepository.updateExitstsAndPersonAndDateForPhone(id, false, person, new Date());
+//        phoneRepository.updateExitstsAndPersonAndDateForPhone(id, person);
         return phone;
     }
 
     @Transactional
     public void retrunPhone(long id) {
-        phoneRepository.updateExistsPhone(id, true);
+//        phoneRepository.updateExistsPhone(id, true);
     }
 }
