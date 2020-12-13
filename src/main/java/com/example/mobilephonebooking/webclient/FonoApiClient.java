@@ -2,30 +2,27 @@ package com.example.mobilephonebooking.webclient;
 
 
 import com.aafanasev.fonoapi.DeviceEntity;
-import com.aafanasev.fonoapi.retrofit.FonoApiFactory;
 import com.aafanasev.fonoapi.retrofit.FonoApiService;
-import retrofit2.Call;
-import retrofit2.Callback;
+import com.example.mobilephonebooking.model.Phone;
+import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import retrofit2.Response;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
+@RequiredArgsConstructor
 public class FonoApiClient {
 
-    public void retreiveDevices() {
-        FonoApiService api = new FonoApiFactory().create();
-        api.getLatest("<token>", "samsung", 10).enqueue(new Callback<List<DeviceEntity>>() {
+    private final FonoApiService api;
+    private final String token;
 
-            @Override
-            public void onResponse(Call<List<DeviceEntity>> call, Response<List<DeviceEntity>> response) {
-                response.body().forEach(device -> {
-                    System.out.println(device.getDeviceName());
-                });
-            }
 
-            @Override
-            public void onFailure(Call<List<DeviceEntity>> call, Throwable t) {}
-
-        });
+    @SneakyThrows
+    public Optional<DeviceEntity> retreiveDevice(Phone phone) {
+        Response<List<DeviceEntity>> execute = api.getDevice(token, phone.getModel(), phone.getBrand(), null).execute();
+        List<DeviceEntity> body = execute.body();
+        return Objects.requireNonNull(body).stream().findAny();
     }
 }

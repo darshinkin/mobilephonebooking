@@ -1,18 +1,19 @@
 package com.example.mobilephonebooking.model;
 
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.ToString;
 
 import java.sql.Date;
 
 @ToString
-@Getter
+@Data
 @Builder
 public class Phone {
 
     private int id;
     private String model;
+    private String brand;
     private boolean availability;
     private Date bookedOut;
 

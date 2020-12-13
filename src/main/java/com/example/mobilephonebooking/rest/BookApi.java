@@ -15,14 +15,16 @@ public class BookApi {
 
     @GetMapping(value = "${app.endpoint.phone.booking}")
     public ResponseEntity<String> bookPhone(@PathVariable int phoneId) {
-        bookService.book(phoneId);
-        return ResponseEntity.ok("Booked phone.");
+        if (bookService.book(phoneId).isPresent()) {
+            return ResponseEntity.ok("Take your phone, please");
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping(value = "${app.endpoint.phone.return}")
     public ResponseEntity<String> returnPhone(@PathVariable int phoneId) {
-        bookService.book(phoneId);
-        return ResponseEntity.ok("Returned phone.");
+        bookService.returnPhone(phoneId);
+        return ResponseEntity.ok("Good luck");
     }
 
 }
