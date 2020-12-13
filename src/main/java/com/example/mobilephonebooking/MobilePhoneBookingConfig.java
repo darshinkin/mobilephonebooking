@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
 public class MobilePhoneBookingConfig {
+
+    private AtomicInteger count = new AtomicInteger(0);
 
     @Bean
     BookService bookService() {
@@ -21,7 +24,7 @@ public class MobilePhoneBookingConfig {
 
     private void initBookService(BookService bookService) {
         List<Phone> phones = new ArrayList<>(10);
-        phoneModels.forEach(model -> phones.add(Phone.builder().availability(true).model(model).build()));
+        phoneModels.forEach(model -> phones.add(Phone.builder().id(count.addAndGet(1)).availability(true).model(model).build()));
         bookService.setPhones(phones);
     }
 

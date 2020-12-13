@@ -6,3 +6,7 @@ server:
   host: localhost
 app:
   phones: Samsung Galaxy S9,Samsung Galaxy S8,Samsung Galaxy S7,Motorola Nexus 6,LG Nexus 5X,Huawei Honor 7X,Apple iPhone X,Apple iPhone 8,Apple iPhone 4s,Nokia 3310
+  endpoint:
+    phone:
+      booking: /api/v1/phone/book/{phoneId}
+      return: /api/v1/phone/return/{phoneId}

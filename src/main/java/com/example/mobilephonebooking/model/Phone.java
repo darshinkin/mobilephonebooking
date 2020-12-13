@@ -11,6 +11,7 @@ import java.sql.Date;
 @Builder
 public class Phone {
 
+    private int id;
     private String model;
     private boolean availability;
     private Date bookedOut;
